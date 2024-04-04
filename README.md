@@ -48,7 +48,9 @@ Typically they contain exported functions or variables only.
 
 Name | Description
 -|-
-[`functionapp`](docs/components/functionapp.md) | Specifies SiteConfig, AppSettings and ConnectionStrings with Function App defaults and valid App Frameworks.
+[`app-service-kind`](docs/utils/app-service-kind.md) | Helpers for App Service `kind` strings
+[`functions`](docs/utils/functions.md) | General helper functions for importing
+[`types`](docs/utils/types.md) | General type definitions
 
 ## Using Modules
 
