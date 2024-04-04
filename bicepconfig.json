@@ -1,6 +1,9 @@
+// This repo's bicep files expect Bicep 0.26.x or newer
+
+// This is an example config file you can take for projects
+// The module aliases require the correct registry URL
+// For DRS members this can be found in team documentation. Ask a friend.
 {
-  // This repo's bicep files expect Bicep 0.26.x or newer
-  
   // See https://aka.ms/bicep/config for more information on Bicep configuration options
   // Press CTRL+SPACE/CMD+SPACE at any location to see Intellisense suggestions
   "analyzers": {
@@ -9,6 +12,22 @@
         "no-unused-params": {
           "level": "warning"
         }
+      }
+    }
+  },
+  "moduleAliases": {
+    "br": {
+      "DrsComponents": {
+        "registry": "<drs-bicep-registry-url>",
+        "modulePath": "bicep/components"
+      },
+      "DrsConfig": {
+        "registry": "<drs-bicep-registry-url>",
+        "modulePath": "bicep/config"
+      },
+      "DrsUtils": {
+        "registry": "<drs-bicep-registry-url>",
+        "modulePath": "bicep/utils"
       }
     }
   }
