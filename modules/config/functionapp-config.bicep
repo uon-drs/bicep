@@ -4,7 +4,7 @@ param appName string
 param appServicePlanSku string
 
 // az functionapp list-runtimes --os-type linux
-@allowed(['DOTNET-ISOLATED|8.0'])
+@allowed(['DOTNET-ISOLATED|8.0', 'Node|20', 'Python|3.11'])
 param appFramework string = 'DOTNET-ISOLATED|8.0'
 
 // Key Value pairs in here

@@ -3,7 +3,7 @@ import { ConnectionStringDictionary } from '../utils/types.bicep'
 param appName string
 
 // az webapp list-runtimes --os-type linux
-@allowed(['DOTNETCORE|8.0'])
+@allowed(['DOTNETCORE|8.0', 'NODE|20-lts', 'PYTHON|3.12'])
 param appFramework string = 'DOTNETCORE|8.0'
 
 // Key Value pairs in here
