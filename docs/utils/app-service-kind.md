@@ -1,4 +1,4 @@
-# Module name
+# utils/app-service-kind
 
 Attempts to resolve the inconsistent structure of App Service `kind` strings with an explicit lookup and a fixed set of valid friendly identifiers.
 

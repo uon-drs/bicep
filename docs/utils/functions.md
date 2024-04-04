@@ -1,4 +1,4 @@
-# Module name
+# utils/functions
 
 Contains useful helper functions, either used by other published modules, or available for import in your own modules.
 

@@ -1,4 +1,4 @@
-# Module name
+# utils/types
 
 Contains type definitions, typically used by params or outputs of other published modules
 
