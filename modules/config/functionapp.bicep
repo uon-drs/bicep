@@ -20,7 +20,7 @@ var baseFunctionSettings = {
   FUNCTIONS_WORKER_RUNTIME: runtime
 }
 
-module settings 'app-service-config.bicep' = {
+module settings 'base/app-service.bicep' = {
   name: 'functionConfig-${uniqueString(appName)}'
   params: {
     appName: appName

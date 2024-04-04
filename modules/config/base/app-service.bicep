@@ -1,9 +1,10 @@
 // This is a general "Base" App Service Site Config module
+// As such it's not published to the registry.
 // You probably actually want a higher level opinionated one
 // for the type of app you're deploying e.g. Function app or Web app etc.
 
-import { getDotNetVersion } from '../utils/functions.bicep'
-import { ConnectionStringDictionary } from '../utils/types.bicep'
+import { getDotNetVersion } from '../../utils/functions.bicep'
+import { ConnectionStringDictionary } from '../../utils/types.bicep'
 
 param appName string
 

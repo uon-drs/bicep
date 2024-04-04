@@ -17,7 +17,7 @@ param connectionStrings ConnectionStringDictionary = {}
 // https://learn.microsoft.com/en-gb/troubleshoot/azure/app-service/faqs-app-service-linux#what-are-the-expected-values-for-the-startup-file-section-when-i-configure-the-runtime-stack-
 param startCommand string = ''
 
-module settings 'app-service-config.bicep' = {
+module settings 'base/app-service.bicep' = {
   name: 'functionConfig-${uniqueString(appName)}'
   params: {
     appName: appName
