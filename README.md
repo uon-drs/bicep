@@ -13,11 +13,18 @@ The table below describes general documentation available, while below the table
 Doc | Description
 -|-
 [Intro](docs/intro.md) | Introduction to Bicep usage in DRS
+[Deployment](docs/deployment.md) | QuickStart guide for deploying Bicep environments
 [KeyVaults](docs/keyvaults.md) | Information about DRS use of Azure KeyVault in Bicep and Bicep created resources.
 
 ### `bicepconfig.json`
 
 This is an example config file suitable for use in projects that reference the modules in this repo.
+
+### `PROJECT_DOCS_TEMPLATE.md`
+
+This is a template for the sort of details (including some common ones) it's useful to document in a project that might use the modules in this repo.
+
+Copy it somewhere sensible in a project repo, such as `.azure/bicep/README.md` and modify the contents to suit your project.
 
 ## Module Documentation
 
