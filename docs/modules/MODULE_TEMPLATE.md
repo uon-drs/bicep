@@ -19,7 +19,7 @@ If necessary, more detailed documentation of exported functions may be given (an
 
 ### `exportedFunction`
 
-```
+```bicep
 exportedFunction(arg1, arg2)
 ```
 
@@ -36,7 +36,7 @@ Type | Description
 
 ##### Example
 
-```
+```bicep
 <Example Return>
 ```
 

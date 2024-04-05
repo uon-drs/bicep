@@ -1,4 +1,4 @@
-# Bicep
+# DRS Bicep
 
 This repo contains reusable Bicep files for DRS projects, as well as documentation and other samples.
 
@@ -7,6 +7,13 @@ Everything in `modules/` is published to a private repository either as a distin
 Published modules can then be referenced in your projects without being directly included.
 
 ## Non-Module Documentation
+
+The table below describes general documentation available, while below the table there are subheadings for further general documentation.
+
+Doc | Description
+-|-
+[Intro](docs/intro.md) | Introduction to Bicep usage in DRS
+[KeyVaults](docs/keyvaults.md) | Information about DRS use of Azure KeyVault in Bicep and Bicep created resources.
 
 ### `bicepconfig.json`
 
@@ -23,12 +30,12 @@ These are modules which deploy resources.
 
 Name | Description
 -|-
-[`app-service-plan`](docs/components/app-service-plan.md) | Creates a Linux app service plan of a given SKU.
-[`app-service`](docs/components/app-service.md) | Creates any kind of App Service. Does some value-add (e.g. AppInsights). Read the docs.
-[`log-analytics-workspace`](docs/components/log-analytics-workspace.md) | Creates a Log Analytics Workspace e.g. for AppInsights.
-[`managed-cert`](docs/components/managed-cert.md) | Creates a Managed SSL Certificate and binds it to a given hostname for an App Service.
-[`storage-account`](docs/components/storage-account.md) | Creates an Azure Storage Account for general use, or Function Apps.
-[`vnet`](docs/components/vnet.md) | Creates a basic VNET, optionally suitable for VNET Integration.
+[`app-service-plan`](docs/modules/components/app-service-plan.md) | Creates a Linux app service plan of a given SKU.
+[`app-service`](docs/modules/components/app-service.md) | Creates any kind of App Service. Does some value-add (e.g. AppInsights). Read the docs.
+[`log-analytics-workspace`](docs/modules/components/log-analytics-workspace.md) | Creates a Log Analytics Workspace e.g. for AppInsights.
+[`managed-cert`](docs/modules/components/managed-cert.md) | Creates a Managed SSL Certificate and binds it to a given hostname for an App Service.
+[`storage-account`](docs/modules/components/storage-account.md) | Creates an Azure Storage Account for general use, or Function Apps.
+[`vnet`](docs/modules/components/vnet.md) | Creates a basic VNET, optionally suitable for VNET Integration.
 
 ### Config
 
@@ -36,9 +43,9 @@ These are modules which deploy a modification or child resource against an alrea
 
 Name | Description
 -|-
-[`functionapp`](docs/components/functionapp.md) | Specifies SiteConfig, AppSettings and ConnectionStrings with Function App defaults and valid App Frameworks.
-[`webapp`](docs/components/webapp.md) | Specifies SiteConfig, AppSettings and ConnectionStrings with Web App defaults and valid App Frameworks.
-[`keyvault-access`](docs/components/keyvault-access.md) | Grants read access to KeyVault Secrets to a given app's Service Principal. This allows that app's AppSettings to reference KeyVault Secrets.
+[`functionapp`](docs/modules/config/functionapp.md) | Specifies SiteConfig, AppSettings and ConnectionStrings with Function App defaults and valid App Frameworks.
+[`webapp`](docs/modules/config/webapp.md) | Specifies SiteConfig, AppSettings and ConnectionStrings with Web App defaults and valid App Frameworks.
+[`keyvault-access`](docs/modules/config/keyvault-access.md) | Grants read access to KeyVault Secrets to a given app's Service Principal. This allows that app's AppSettings to reference KeyVault Secrets.
 
 ### Utils
 
@@ -48,9 +55,9 @@ Typically they contain exported functions or variables only.
 
 Name | Description
 -|-
-[`app-service-kind`](docs/utils/app-service-kind.md) | Helpers for App Service `kind` strings
-[`functions`](docs/utils/functions.md) | General helper functions for importing
-[`types`](docs/utils/types.md) | General type definitions
+[`app-service-kind`](docs/modules/utils/app-service-kind.md) | Helpers for App Service `kind` strings
+[`functions`](docs/modules/utils/functions.md) | General helper functions for importing
+[`types`](docs/modules/utils/types.md) | General type definitions
 
 ## Using Modules
 

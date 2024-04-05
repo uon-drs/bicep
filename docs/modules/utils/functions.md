@@ -11,7 +11,7 @@ Name | Type | Description
 
 ### `referenceSecret`
 
-```
+```bicep
 referenceSecret(vaultName, secretName)
 ```
 
@@ -28,8 +28,8 @@ Type | Description
 
 ##### Example
 
-```
-@Microsoft.KeyVault(VaultName=${vaultName};SecretName=${secretName})
+```bicep
+'@Microsoft.KeyVault(VaultName=${vaultName};SecretName=${secretName})'
 ```
 
 ## Changelog
