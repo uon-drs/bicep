@@ -3,8 +3,11 @@ import { ConnectionStringDictionary } from '../utils/types.bicep'
 param appName string
 
 // az webapp list-runtimes --os-type linux
-@allowed(['DOTNETCORE|8.0', 'NODE|20-lts', 'PYTHON|3.12'])
+@allowed(['DOTNETCORE|8.0', 'NODE|20-lts', 'PYTHON|3.12', 'DOCKER'])
 param appFramework string = 'DOTNETCORE|8.0'
+
+// This is required if appFramework is set to DOCKER
+param dockerImage string = ''
 
 // Key Value pairs in here
 param appSettings object = {}
@@ -21,7 +24,7 @@ module settings 'base/app-service.bicep' = {
   name: 'functionConfig-${uniqueString(appName)}'
   params: {
     appName: appName
-    appFramework: appFramework
+    appFramework: appFramework == 'DOCKER' ? '${appFramework}|${dockerImage}' : appFramework
     siteConfig: {
       appCommandLine: startCommand
     }
