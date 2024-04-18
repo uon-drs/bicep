@@ -43,7 +43,24 @@ kv.getSecret('my-secret-name')
 
 - KeyVaults accessed directly by Bicep modules must be pre-existing and populated with the secrets being accessed
     - MUST have template access enabled on the kv for bicep to fetch secrets
-    - MUST have `Key Vault Secret User` or better (e.g. `Contributor` or `Owner`) on the KV for the user running the bicep
+    - MUST have `Key Vault Secrets User` on the KV for the user running the bicep
+
+## Accessing Key Vault Secrets as a User
+
+Users need the `Key Vault Secrets User` role to access secrets.
+This applies whether from the portal, the Azure CLI, or when deploying Bicep.
+
+Some Users (but almost never applications/Service Principals) may want greater access. Choose the appropriate role (e.g. `Key Vault Secrets Officer`, `Key Vault Administrator`...)
+
+> [!TIP]
+> The below steps work for granting Key Vault access to any kind of Azure AD Principal.
+
+### Assigning Roles
+
+- Manage Access Control (IAM) for the Key Vault
+  - Assign roles (you'll need to be `Owner` or `RBAC Administrator` on the Key Vault)
+    - Select the `Key Vault Secrets User` role, or whichever other role is appropriate
+    - Search for the Principal's display name (or principal id)
 
 ## Accesssing KeyVault Secrets in Azure Pipelines
 
@@ -63,10 +80,7 @@ This is done as follows:
   - the default is `<DevOpsOrganisation>-<DevOpsProject>-<AzureSubscriptionId>`, not unique
   - giving it something meaningful makes the next step easier!
   - consider matching the Service Connection name?
-- Manage Access Control (IAM) for the Key Vault
-  - Assign roles (you'll need to be `Owner` or `RBAC Administrator` on the Key Vault)
-    - Search for the Service Principal's display name or object id
-    - Assign the `Key Vault Secret User` role
+- Grant access to the Service Principal following the [Role Assignment](#assigning-roles) steps above.
 
 ## SSH Keys in KeyVault
 
