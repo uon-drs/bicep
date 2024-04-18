@@ -59,7 +59,7 @@ The changelog is very important as published modules are version tagged in the r
 - Newly published versions must have unique tags so that older projects do not break (they can safely use older versions of published modules)
 - The changelog should allow projects to understand which versions of modules they can or cannot use based on their needs
 - The changelog may help make clear when updates to a module are warranted, resulting in a new version
-- The use of git tags is encouraged to represent commits module versions have been published from. Such a commit should include updated modulex docs and changelog 
+- The use of git tags is encouraged to represent commits module versions have been published from. Such a commit should include updated module docs and changelog 
 
 ### v1
 Initial release

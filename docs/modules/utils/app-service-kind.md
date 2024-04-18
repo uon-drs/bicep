@@ -12,5 +12,4 @@ Name | Type | Description
 ## Changelog
 
 ### v1
-
 Initial release
