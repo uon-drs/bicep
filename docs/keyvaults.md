@@ -14,8 +14,6 @@ Because of the need to pre-populate secrets so they can be [used](#accessing-key
 1. Create a KeyVault
 
 - Preferable name it similarly to `<serviceName>-<environment>-kv`
-- Secure it using Vault Access Policies
-  - currently some of our Bicep/Pipelines uses this access style to grant apps access
 - Allow Azure Resource Manager access for Template Deployments
   - This lets Bicep files retrieve secrets directly
 
@@ -45,7 +43,24 @@ kv.getSecret('my-secret-name')
 
 - KeyVaults accessed directly by Bicep modules must be pre-existing and populated with the secrets being accessed
     - MUST have template access enabled on the kv for bicep to fetch secrets
-    - MUST have Contributor or Owner on the KV for the user running the bicep
+    - MUST have `Key Vault Secrets User` on the KV for the user running the bicep
+
+## Accessing Key Vault Secrets as a User
+
+Users need the `Key Vault Secrets User` role to access secrets.
+This applies whether from the portal, the Azure CLI, or when deploying Bicep.
+
+Some Users (but almost never applications/Service Principals) may want greater access. Choose the appropriate role (e.g. `Key Vault Secrets Officer`, `Key Vault Administrator`...)
+
+> [!TIP]
+> The below steps work for granting Key Vault access to any kind of Azure AD Principal.
+
+### Assigning Roles
+
+- Manage Access Control (IAM) for the Key Vault
+  - Assign roles (you'll need to be `Owner` or `RBAC Administrator` on the Key Vault)
+    - Select the `Key Vault Secrets User` role, or whichever other role is appropriate
+    - Search for the Principal's display name (or principal id)
 
 ## Accesssing KeyVault Secrets in Azure Pipelines
 
@@ -65,16 +80,7 @@ This is done as follows:
   - the default is `<DevOpsOrganisation>-<DevOpsProject>-<AzureSubscriptionId>`, not unique
   - giving it something meaningful makes the next step easier!
   - consider matching the Service Connection name?
-- In a new tab/window go to the keyvault you're granting access to, and go to its Access Policies.
-- Go to add an access policy.
-- Grant the relevant rights (usually `Get`, `List` on `Secrets`)
-- Select Principal:
-  - copy the Service Principal's display name to search for it
-  - there may be multiple matching search results for display name
-  - find the right one by matching the "Application (client) ID" between your Service Principal and the search results.
-- Leave "Authorized Application" empty
-- After saving, the access policy should appear under "Applications"
-- DON'T FORGET TO SAVE IN THE ACCESS POLICIES PAGE!
+- Grant access to the Service Principal following the [Role Assignment](#assigning-roles) steps above.
 
 ## SSH Keys in KeyVault
 

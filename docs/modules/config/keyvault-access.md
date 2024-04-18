@@ -1,21 +1,35 @@
 # config/keyvault-access
 
-This module configures access to an _existing_ Key Vault via Access Policies.
+This module configures access to an _existing_ Key Vault via RBAC.
 
-- It can grant access to any object (i.e. an app or user?) in a given Azure AD Tenant.
-- It only grants access to **GET** (not LIST or any write access) **Secrets** (not Certs or Keys).
-- This version is for Access Policies only, not RBAC.
-    - Access Policies are legacy; a future module release will use RBAC instead.
+- It can grant access to any Service Principal in the Key Vault's Azure AD Tenant.
+    - Future versions may offer more Principal types, but this suits our current usage (granting access to Managed Identities for Application deployed via Bicep).
+- It only grants read-only access **Secrets** (not Certs or Keys).
+    - This is because it always assigns the role `Key Vault Secrets User` currently.
+    - Future versions may offer more options, but this suits our current usage.
+- This version is for RBAC only, not Key Vault Access Policies.
+    - Access Policies are legacy, and will eventually be deprecated in Azure.
 
 ## Parameters
 
 Name | Type | Description | Notes
 -|-|-|-
 `keyVaultName` | `string` | Name of an existing Key Vault to grant access to |
-`tenantId` | `string` | ID of the Azure AD Tenant containing the Object to be granted access |
-`objectId` | `string` | ID of the Object to grant access to. e.g. A User, Application or Service Principal. | Typically in Bicep we are granting a deployed Application access via Managed Identity.
+`principalId` | `string` | ID of a Service Principal to grant access to |
 
 ## Changelog
+
+### v2
+- Grants access via RBAC
+- Access Policies are no longer supported.
+    - If you have an existing Key Vault secured by Access Policies:
+        - Use `v1` of this module, or
+        - Migrate the Key Vault to use RBAC.
+- Added module parameters:
+    - `principalId` - renamed from `objectId`
+- Removed module parameters:
+    - `tenantId`
+    - `objectId` - renamed to `objectId`
 
 ### v1
 Initial release
