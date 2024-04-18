@@ -8,6 +8,24 @@ You don't need anything special to use them; just the Azure CLI.
 
 If writing them, you will want the VS code Bicep extension.
 
+# Tags in DRS
+
+Tagging resources in Azure is good practice, and tags can be useful for a variety of reasons by different people. For example, tags can be used to co-ordinate billing of resources within an organisation.
+
+Bicep can apply tags to resources too.
+
+All modules in this repository will apply a tag of `Source: Bicep` to top level resources they deploy, and will accept a parameter of further Key Value pairs to apply as tags.
+
+For DRS in particular, there are some recommended tags, and some explicitly NOT recommended due to policies which affect the behaviour of those tags.
+
+Tag | Recommended for Bicep | Description
+-|-|-
+`Environment` | ✅ | Due to the way we structure Bicep (see below), it should always be possible to tag by Environment, and this is useful when (as is often the case for DRS) environments share the same RG.
+`ServiceScope` | ✅ | Describes the "scope" within a "Service" (see the `Service` tag below) that one or more resources belong to. Encouraged on all resources and useful when a resource group doesn't map 1:1 with a service.
+`Service` | ❌ | Recommended to apply manually on Resource Groups to identify the project, service, or unit the RG is for. Policies will force child Resources to inherit this from their RG, so no point setting it in Bicep; use `ServiceScope` instead.
+`FriendlyIdentifier` | ❌ | This was used in the way that `Service` now is, but should be considered legacy, as it's quite a cumbersome Tag key.
+`CostCentre` | ❌ | This relates to billing tracking, and Resources inherit from their RG, so Bicep should never set it.
+
 # Bicep structure in DRS
 
 We structure our Bicep files in composed layers.
