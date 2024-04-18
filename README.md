@@ -100,17 +100,19 @@ Name | Description
 
 ### Example publish command:
 
+From the root of the repo:
+
 ```bash
 az bicep publish \
---file webapp.bicep \
+--file ./modules/config/webapp.bicep \
 --target br:<registry-url>/bicep/config/webapp:v1 \
---documentationUri https://github.com/uon-drs/bicep/blob/main/README.md
+--documentationUri https://github.com/uon-drs/bicep/blob/config/webapp@v1/docs/modules/config/webapp.md
 ```
 
 > [!WARNING]
 > Remember! 
-> - replace the version tag for the registry
-> - point at the correct git commit/tag for the README/docs link.
+> - use the correct registry version tag on the target
+> - point at the correct git tag  (and module document!) for the docs link.
 
 ### Publishing new modules
 
