@@ -106,7 +106,7 @@ From the root of the repo:
 az bicep publish \
 --file ./modules/config/webapp.bicep \
 --target br:<registry-url>/bicep/config/webapp:v1 \
---documentationUri https://github.com/uon-drs/bicep/blob/config/webapp@v1/docs/modules/config/webapp.md
+--documentation-uri https://github.com/uon-drs/bicep/blob/config/webapp@v1/docs/modules/config/webapp.md
 ```
 
 > [!WARNING]
