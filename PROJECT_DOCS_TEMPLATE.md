@@ -24,12 +24,6 @@ Not everything is done by ARM (see below for details), so here is a list of step
 1. Optional Custom Hostname configuration
     - If you pass a custom hostname to an ARM Template, it _will_ do a cursory check of your DNS settings
     - so you need to set an `asuid` subdomain TXT record to point to your Azure subscription. This is well documented by Microsoft.
-1. Create Third Party (e.g. Google) Service credentials for the environment, if necessary e.g.
-    - ReCAPTCHA credentials
-    - Maps API Keys
-    - Analytics API Keys
-    - Elastic Cloud credentials
-    - etc.
 1. Decide on a suitable resource group for the environment.
     - Sometimes this may be out of your hands, if provided with an existing Resource Group
     - A project's bicep stack may often share some resources at a resource group level
@@ -37,10 +31,6 @@ Not everything is done by ARM (see below for details), so here is a list of step
 1. Create the resource group if necessary
     - give it a sensible name e.g. `myproject-nonprod`
     - Make the location the same as you want the resources to be, ideally. e.g. `uksouth`
-1. Create a SendGrid account if necessary
-    - validate it
-    - create an api key
-    - see [**DRS SendGrid Guidance**](https://github.com/orgs/uon-drs/discussions/32)
 1. Create Key Vaults
     - To store secrets that will be used during deployment to configure resources
         - e.g. DB Connection string, Sendgrid API keys, Recaptcha secrets...
@@ -51,6 +41,21 @@ Not everything is done by ARM (see below for details), so here is a list of step
             - `<service-name>-nonprod-kv`
     - Create a Key Vault for the specific environment you're deploying
         - name it `<service-name>-<env>-kv`
+1. Create Third Party (e.g. Google) Service credentials for the environment, if necessary e.g.
+    - ReCAPTCHA credentials
+    - Maps API Keys
+    - Analytics API Keys
+    - Elastic Cloud credentials
+    - etc.
+1. Create a SendGrid account if necessary
+    - validate it
+    - create an api key
+    - see [**DRS SendGrid Guidance**](https://github.com/orgs/uon-drs/discussions/32)
+1. Keycloak deployment
+    - Project deployment if necessary - or use drs-core-identity:
+        - This project uses Keycloak / OIDC. All current environments refer to the drs-core-identity keycloak, but if a new environment should differ, Keycloak deployment and configuration will be needed
+    - Realm configuration will be needed
+    - If connecting to Azure AD / Microsoft Entra, an App Registration will be needed.
 1. Populate Environment Key Vault with App Secrets
    - You **must** put in secrets that are expected by app settings configured by the templates else they will not be correctly linked
    - Required Secrets are documented in the [**Key Vault Secrets**](#key-vault-secrets) section below
