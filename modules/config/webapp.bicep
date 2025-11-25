@@ -3,7 +3,7 @@ import { ConnectionStringDictionary } from '../utils/types.bicep'
 param appName string
 
 // az webapp list-runtimes --os-type linux
-@allowed(['DOTNETCORE|10.0', 'NODE|20-lts', 'PYTHON|3.12', 'DOCKER'])
+@allowed(['DOTNETCORE|10.0', 'NODE|22-lts', 'NODE|24-lts', 'PYTHON|3.12', 'PYTHON|3.13', 'PYTHON|3.14', 'DOCKER'])
 param appFramework string = 'DOTNETCORE|10.0'
 
 // This is required if appFramework is set to DOCKER
